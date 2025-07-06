@@ -2,7 +2,7 @@
   "name": "ailp3-learning-platform",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://GDataLabs.github.io/ailp3-learning-platform",
+  "homepage": "https://GDataLabs.github.io/ai_financial_literacy",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",

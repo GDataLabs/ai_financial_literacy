@@ -119,29 +119,41 @@ const AIFinancialLiteracyApp = () => {
       title: 'How Many Apps Did You Use Yesterday?',
       component: <OpeningPoll responses={pollResponses} setPollResponses={setPollResponses} />
     },
-    // Module 2: AI Economy
+    // Module 2: AI Economy - Part 1
     {
-      id: 'data-dollars',
+      id: 'data-value',
       title: "Your Data's Value",
-      component: <DataDollarsModule setUserDataValue={setUserDataValue} userDataValue={userDataValue} />
+      component: <DataValueModule setUserDataValue={setUserDataValue} userDataValue={userDataValue} />
     },
-    // Module 3: Responsible AI
+    // Module 3: AI Economy - Part 2
+    {
+      id: 'data-reality',
+      title: 'The Data Economy Reality',
+      component: <DataRealityModule />
+    },
+    // Module 4: Responsible AI
     {
       id: 'bias-reality',
       title: 'AI Bias in Financial Services',
       component: <BiasModule />
     },
-    // Module 4: AI Tools Demo
+    // Module 5: AI Tools Demo
     {
       id: 'ai-tools',
       title: 'AI Financial Planning Tools',
       component: <AIToolsDemo selectedPrompt={selectedPrompt} setSelectedPrompt={setSelectedPrompt} aiResponse={aiResponse} setAiResponse={setAiResponse} />
     },
-    // Module 5: Partner Activity
+    // Module 6: Partner Activity
     {
       id: 'partner-activity',
       title: 'Design Your AI Financial Solution',
       component: <PartnerActivity time={partnerActivityTime} isRunning={isTimerRunning} setIsRunning={setIsTimerRunning} setPartnerActivityTime={setPartnerActivityTime} />
+    },
+    // Module 7: Example Project
+    {
+      id: 'teen-finance-game',
+      title: 'Project Example: Teen Finance Quest',
+      component: <TeenFinanceGameModule />
     },
     // Closing
     {
@@ -623,42 +635,14 @@ const OpeningPoll = ({ responses, setPollResponses }) => {
   );
 };
 
-// Data Dollars Module
-const DataDollarsModule = ({ setUserDataValue, userDataValue }) => {
+// Data Value Module - Only video and calculator
+const DataValueModule = ({ setUserDataValue, userDataValue }) => {
   const [appUsage, setAppUsage] = useState({ facebook: 2, tiktok: 3, instagram: 2, snapchat: 1 });
-  const [flippedPrinciple, setFlippedPrinciple] = useState(null);
   
   useEffect(() => {
     const total = Object.values(appUsage).reduce((sum, hours) => sum + hours, 0);
     setUserDataValue(total * 15); // $15 per hour of usage estimate
   }, [appUsage, setUserDataValue]);
-
-  const dataForDollarsPrinciples = [
-    {
-      icon: <Handshake className="w-10 h-10 mx-auto text-green-500" />,
-      title: "Consent",
-      description: "You have the absolute right to control your data. Nothing is shared without your informed, explicit, and ongoing permission.",
-      details: "This means no hidden clauses or confusing terms. You get to decide exactly what data is used, how it's used, and for how long. It's about putting you in the driver's seat of your digital life."
-    },
-    {
-      icon: <Eye className="w-10 h-10 mx-auto text-blue-500" />,
-      title: "Transparency",
-      description: "No more black boxes. You deserve to see exactly how your data creates value and how that value is shared.",
-      details: "This includes clear reports on which companies are using your data, what they're using it for, and how the compensation you receive is calculated. Full transparency builds trust."
-    },
-    {
-      icon: <Scale className="w-10 h-10 mx-auto text-yellow-500" />,
-      title: "Fairness",
-      description: "The value you create should be recognized and shared equitably. This model ensures the system isn't rigged against you.",
-      details: "Fairness means the economic benefits of AI are distributed broadly, not just concentrated at the top. It ensures that as the digital economy grows, everyone has the opportunity to prosper from it."
-    },
-    {
-      icon: <DollarSign className="w-10 h-10 mx-auto text-red-500" />,
-      title: "Compensation",
-      description: "Your data has real economic value. You should be compensated for it, creating a new potential income stream.",
-      details: "This isn't just about pocket change. As AI becomes more integrated into the economy, compensating users for their data can create a sustainable economic model that bridges the wage gap created by job displacement."
-    }
-  ];
   
   return (
     <div className="space-y-12">
@@ -711,7 +695,47 @@ const DataDollarsModule = ({ setUserDataValue, userDataValue }) => {
           <p className="text-sm mt-2">But companies make billions from collective data!</p>
         </div>
       </div>
+      
+      <div className="text-center mt-12">
+        <Quote text="In the digital age, data is the new oil." author="Clive Humby" />
+      </div>
+    </div>
+  );
+};
 
+// Data Reality Module - Reality check and data-for-dollars
+const DataRealityModule = () => {
+  const [flippedPrinciple, setFlippedPrinciple] = useState(null);
+  
+  const dataForDollarsPrinciples = [
+    {
+      icon: <Handshake className="w-10 h-10 mx-auto text-green-500" />,
+      title: "Consent",
+      description: "You have the absolute right to control your data. Nothing is shared without your informed, explicit, and ongoing permission.",
+      details: "This means no hidden clauses or confusing terms. You get to decide exactly what data is used, how it's used, and for how long. It's about putting you in the driver's seat of your digital life."
+    },
+    {
+      icon: <Eye className="w-10 h-10 mx-auto text-blue-500" />,
+      title: "Transparency",
+      description: "No more black boxes. You deserve to see exactly how your data creates value and how that value is shared.",
+      details: "This includes clear reports on which companies are using your data, what they're using it for, and how the compensation you receive is calculated. Full transparency builds trust."
+    },
+    {
+      icon: <Scale className="w-10 h-10 mx-auto text-yellow-500" />,
+      title: "Fairness",
+      description: "The value you create should be recognized and shared equitably. This model ensures the system isn't rigged against you.",
+      details: "Fairness means the economic benefits of AI are distributed broadly, not just concentrated at the top. It ensures that as the digital economy grows, everyone has the opportunity to prosper from it."
+    },
+    {
+      icon: <DollarSign className="w-10 h-10 mx-auto text-red-500" />,
+      title: "Compensation",
+      description: "Your data has real economic value. You should be compensated for it, creating a new potential income stream.",
+      details: "This isn't just about pocket change. As AI becomes more integrated into the economy, compensating users for their data can create a sustainable economic model that bridges the wage gap created by job displacement."
+    }
+  ];
+  
+  return (
+    <div className="space-y-12">
       {/* The Reality Check */}
       <div className="max-w-4xl mx-auto space-y-6">
         <h3 className="text-2xl font-bold text-slate-800 text-center">The Reality Check</h3>
@@ -761,10 +785,10 @@ const DataDollarsModule = ({ setUserDataValue, userDataValue }) => {
           ))}
         </div>
       </div>
-       <div className="text-center mt-12">
-         <Quote text="You are the new asset class. Your data is your property." author="John Hope Bryant" />
+      
+      <div className="text-center mt-12">
+        <Quote text="You are the new asset class. Your data is your property." author="John Hope Bryant" />
       </div>
-
     </div>
   );
 };
@@ -889,7 +913,7 @@ const BiasModule = () => {
       </div>
       
       <div className="text-center mt-12">
-         <Quote text="In the age of AI, algorithmic bias is the new frontier of civil rights." author="John Hope Bryant" />
+        <Quote text="In the age of AI, algorithmic bias is the new frontier of civil rights." author="John Hope Bryant" />
       </div>
     </div>
   );
@@ -1007,8 +1031,8 @@ const AIToolsDemo = ({ selectedPrompt, setSelectedPrompt, aiResponse, setAiRespo
             <p className="text-slate-500">Select a prompt above to see what the AI says!</p>
         )}
       </div>
-       <div className="text-center mt-12">
-         <Quote text="The best investment you can make is in your own knowledge." author="Warren Buffett" />
+      <div className="text-center mt-12">
+        <Quote text="The best investment you can make is in your own knowledge." author="Warren Buffett" />
       </div>
     </div>
   );
@@ -1167,7 +1191,21 @@ const PartnerActivity = ({ time, isRunning, setIsRunning, setPartnerActivityTime
         </div>
       </div>
       
-      {/* Teen Finance Game */}
+      <div className="text-center mt-12">
+        <Quote text="The best way to predict the future is to create it." author="Peter Drucker" />
+      </div>
+    </div>
+  );
+};
+
+// Teen Finance Game Module
+const TeenFinanceGameModule = () => {
+  return (
+    <div className="space-y-8">
+      <div className="text-center mb-8">
+        <p className="text-xl text-slate-700">🎮 Learn financial literacy through interactive gameplay!</p>
+      </div>
+      
       <div className="max-w-4xl mx-auto">
         <div className="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-lg">
           <h3 className="text-lg font-bold mb-4 text-slate-800 text-center">
@@ -1188,8 +1226,8 @@ const PartnerActivity = ({ time, isRunning, setIsRunning, setPartnerActivityTime
         </div>
       </div>
       
-       <div className="text-center mt-12">
-         <Quote text="The best way to predict the future is to create it." author="Peter Drucker" />
+      <div className="text-center mt-12">
+        <Quote text="An investment in knowledge pays the best interest." author="Benjamin Franklin" />
       </div>
     </div>
   );
@@ -1262,44 +1300,12 @@ const ClosingModule = ({ pledgeData, setPledgeData, finalWords, setFinalWords })
         )}
       </div>
       
-      <div className="mt-12 space-y-6">
-        <h3 className="text-2xl font-bold text-center text-slate-800">Financial Dignity Declaration</h3>
-        <p className="text-center text-slate-600">Add your word to our collective vision</p>
-        
-        <div className="flex gap-2 max-w-md mx-auto">
-          <input
-            type="text"
-            value={newWord}
-            onChange={(e) => setNewWord(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleAddWord()}
-            className="flex-1 px-4 py-2 bg-slate-100 border border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
-            placeholder="Your word for financial dignity..."
-          />
-          <button
-            onClick={handleAddWord}
-            className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg hover:opacity-90 transition-all font-semibold"
-          >
-            <Send className="w-5 h-5" />
-          </button>
-        </div>
-        
-        <div className="flex flex-wrap gap-3 justify-center max-w-4xl mx-auto">
-          {[...sampleWords, ...finalWords].map((word, index) => (
-            <span
-              key={index}
-              className="px-4 py-2 bg-white rounded-full border border-slate-200 shadow-sm text-slate-700"
-            >
-              {word}
-            </span>
-          ))}
-        </div>
-      </div>
       
       {/* Data Dignity Meter */}
       <div className="mt-8 mb-6">
         <div className="text-center mb-4">
           <h3 className="text-xl font-bold text-slate-800 mb-2">Data Dignity Meter</h3>
-          <p className="text-sm text-slate-600">Complete your pledge and add to the declaration to fill up your dignity fuel!</p>
+          <p className="text-sm text-slate-600">Complete your pledge to fill up your dignity fuel!</p>
         </div>
         <div className="relative w-48 h-48 mx-auto">
           {/* Fuel Tank Outline */}
@@ -1311,9 +1317,8 @@ const ClosingModule = ({ pledgeData, setPledgeData, finalWords, setFinalWords })
                 height: `${(() => {
                   const pledgeFields = [pledgeData.tool, pledgeData.goal, pledgeData.teach];
                   const completedPledge = pledgeFields.filter(field => field.trim() !== '').length;
-                  const pledgePoints = (completedPledge / pledgeFields.length) * 75; // 75% for pledge
-                  const declarationPoints = finalWords.length > 0 ? 25 : 0; // 25% for declaration
-                  return Math.min(pledgePoints + declarationPoints, 100);
+                  const pledgePoints = (completedPledge / pledgeFields.length) * 100; // 100% for pledge
+                  return Math.min(pledgePoints, 100);
                 })()}%` 
               }}
             ></div>
@@ -1333,9 +1338,8 @@ const ClosingModule = ({ pledgeData, setPledgeData, finalWords, setFinalWords })
                   {(() => {
                     const pledgeFields = [pledgeData.tool, pledgeData.goal, pledgeData.teach];
                     const completedPledge = pledgeFields.filter(field => field.trim() !== '').length;
-                    const pledgePoints = (completedPledge / pledgeFields.length) * 75;
-                    const declarationPoints = finalWords.length > 0 ? 25 : 0;
-                    return Math.round(Math.min(pledgePoints + declarationPoints, 100));
+                    const pledgePoints = (completedPledge / pledgeFields.length) * 100;
+                    return Math.round(Math.min(pledgePoints, 100));
                   })()}%
                 </span>
               </div>
@@ -1349,15 +1353,13 @@ const ClosingModule = ({ pledgeData, setPledgeData, finalWords, setFinalWords })
             {(() => {
               const pledgeFields = [pledgeData.tool, pledgeData.goal, pledgeData.teach];
               const completedPledge = pledgeFields.filter(field => field.trim() !== '').length;
-              const hasDeclaration = finalWords.length > 0;
-              return `Pledge: ${completedPledge}/3 • Declaration: ${hasDeclaration ? '✓' : '✗'}`;
+              return `Pledge Completion: ${completedPledge}/3`;
             })()}
           </p>
           <div className="flex gap-4 justify-center text-xs text-slate-500">
             <button
               onClick={() => {
                 setPledgeData({ tool: '', goal: '', teach: '' });
-                setFinalWords([]);
               }}
               className="px-3 py-1 bg-slate-200 rounded-lg hover:bg-slate-300 transition-colors"
             >
