@@ -583,7 +583,7 @@ const OpeningPoll = ({ responses, setPollResponses }) => {
               <span key={apps}>{apps}</span>
             ))}
           </div>
-          <div className="text-center mt-2 text-sm text-slate-500">Number of Apps Used</div>
+          <div className="text-center mt-4 mb-6 text-sm text-slate-500">Number of Apps Used</div>
           <div className="absolute -left-8 top-1/2 transform -rotate-90 text-sm text-slate-500">Hours on Phone</div>
         </div>
       </div>
