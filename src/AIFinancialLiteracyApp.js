@@ -625,7 +625,7 @@ const OpeningPoll = ({ responses, setPollResponses }) => {
         </div>
       )}
       
-      <div className="text-center mt-8 space-y-4">
+      <div className="text-center mt-16 space-y-4">
         <div className="bg-white p-6 rounded-2xl max-w-2xl mx-auto border border-slate-200 shadow-lg">
           <Quote text="Moving from civil rights to silver rights" author="John Hope Bryant" />
           <p className="mt-4 text-lg text-slate-700">Every app collects data. Every tap has value. It's time you understood YOUR worth in the digital economy!</p>
