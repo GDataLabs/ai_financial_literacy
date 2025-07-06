@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ai_financial_literacy/static/css/main.eb3f923b.css",
+    "main.js": "/ai_financial_literacy/static/js/main.5bbd45b9.js",
+    "static/js/453.e6643842.chunk.js": "/ai_financial_literacy/static/js/453.e6643842.chunk.js",
+    "index.html": "/ai_financial_literacy/index.html",
+    "main.eb3f923b.css.map": "/ai_financial_literacy/static/css/main.eb3f923b.css.map",
+    "main.5bbd45b9.js.map": "/ai_financial_literacy/static/js/main.5bbd45b9.js.map",
+    "453.e6643842.chunk.js.map": "/ai_financial_literacy/static/js/453.e6643842.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb3f923b.css",
+    "static/js/main.5bbd45b9.js"
+  ]
+}
